@@ -1,0 +1,95 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Misc
+\bibitem[{Bivand et~al.(2015)Bivand, Keitt and Rowlingson}]{Bivand2015}
+\bibinfo{author}{Bivand, R.}, \bibinfo{author}{Keitt, T.},
+  \bibinfo{author}{Rowlingson, B.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{rgdal: Bindings for the Geospatial Data Abstraction
+  Library}}.
+\newblock \URLprefix \url{https://CRAN.R-project.org/package=rgdal}.
+  \bibinfo{note}{r package version 1.1-1}.
+%Type = Article
+\bibitem[{Bogino and Bravo(2008)}]{Bogino2008}
+\bibinfo{author}{Bogino, S.M.}, \bibinfo{author}{Bravo, F.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Growth response of \emph{Pinus pinaster} ait. to
+  climatic variables in central spanish forests}.
+\newblock \bibinfo{journal}{Ann. For. Sci.} \bibinfo{volume}{65},
+  \bibinfo{pages}{1--13}.
+\newblock \DOIprefix\doi{10.1051/forest:2008025}.
+%Type = Article
+\bibitem[{Bunn(2010)}]{Bunn2010}
+\bibinfo{author}{Bunn, A.G.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Statistical and visual crossdating in r using the
+  dplr library}.
+\newblock \bibinfo{journal}{Dendrochronologia} \bibinfo{volume}{28},
+  \bibinfo{pages}{251 -- 258}.
+\newblock \DOIprefix\doi{10.1016/j.dendro.2009.12.001}.
+%Type = Article
+\bibitem[{Goslee and Urban(2007)}]{Goslee2007}
+\bibinfo{author}{Goslee, S.C.}, \bibinfo{author}{Urban, D.L.},
+  \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{The ecodist package for dissimilarity-based analysis
+  of ecological data}.
+\newblock \bibinfo{journal}{J. Stat. Softw.} \bibinfo{volume}{22},
+  \bibinfo{pages}{1--19}.
+%Type = Article
+\bibitem[{Herrera et~al.(2015)Herrera, Fern{\'a}ndez and
+  Guti{\'e}rrez}]{Herrera2015}
+\bibinfo{author}{Herrera, S.}, \bibinfo{author}{Fern{\'a}ndez, J.},
+  \bibinfo{author}{Guti{\'e}rrez, J.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Update of the Spain02 gridded observational dataset
+  for EURO-CORDEX evaluation: assessing the effect of the interpolation
+  methodology}}.
+\newblock \bibinfo{journal}{International Journal of Climatology} .
+%Type = Misc
+\bibitem[{Hijmans(2015)}]{Hijmans2015}
+\bibinfo{author}{Hijmans, R.J.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{raster: Geographic data analysis and modeling}.
+\newblock \URLprefix \url{https://CRAN.R-project.org/package=raster}.
+  \bibinfo{note}{r package version 2.4-30}.
+%Type = Misc
+\bibitem[{Lara and Bravo(2015)}]{Lara2015b}
+\bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{BIOdry: Multilevel Modeling of Dendroclimatical
+  Fluctuations}}.
+\newblock \bibinfo{howpublished}{CRAN}.
+\newblock \URLprefix
+  \url{https://cran.r-project.org/web/packages/BIOdry/index.html}.
+%Type = Article
+\bibitem[{Lara et~al.(2013)Lara, Bravo and Maguire}]{Lara2013}
+\bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.},
+  \bibinfo{author}{Maguire, D.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Modeling patterns between drought and tree biomass
+  growth from dendrochronological data: A multilevel approach}.
+\newblock \bibinfo{journal}{Agric. For. Meteorol.} \bibinfo{volume}{178-179},
+  \bibinfo{pages}{140 -- 151}.
+\newblock \DOIprefix\doi{10.1016/j.agrformet.2013.04.017}.
+%Type = Article
+\bibitem[{Lara et~al.(2015)Lara, Bravo and Sierra}]{Lara2015}
+\bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.},
+  \bibinfo{author}{Sierra, C.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{measuRing: An R package to measure tree-ring widths
+  from scanned images}}.
+\newblock \bibinfo{journal}{Dendrochronologia} \bibinfo{volume}{34},
+  \bibinfo{pages}{43 -- 50}.
+\newblock \DOIprefix\doi{10.1016/j.dendro.2015.04.002}.
+%Type = Manual
+\bibitem[{Neves(2012)}]{Neves2012}
+\bibinfo{author}{Neves, J.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{spi: Compute SPI index}}.
+\newblock \URLprefix \url{https://CRAN.R-project.org/package=spi}.
+  \bibinfo{note}{r package version 1.1}.
+
+\end{thebibliography}

@@ -1,0 +1,647 @@
+\documentclass[review,authoryear]{elsarticle} 
+
+\usepackage{lineno}
+\usepackage{listings}
+\usepackage{array} 
+\usepackage{graphicx}
+\usepackage{upquote}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\definecolor{ligth-gray}{gray}{0.3}
+\usepackage{fancyvrb}
+%% \fvset{formatcom =\color{ligth-gray},
+\fvset{formatcom =\color{blue},
+fontsize=\footnotesize,xleftmargin=10mm}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+
+\usepackage{caption}
+\captionsetup[table]{font=footnotesize,
+skip=10pt,labelfont=bf,format=hang,
+justification = justified,
+margin = 0pt}
+\usepackage{amsmath}
+\usepackage{tabu}
+%% \usepackage{doi}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{filecontents}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=Violet,
+  linkcolor=Red,
+  urlcolor=Blue}
+
+
+\begin{document}
+\begin{frontmatter}
+%% \title{\textbf{R-package 'biodRy': multilevel modeling of dendro-climatical interactions}}
+\title{\textbf{biodRy: an R package to develop multilevel modeling of
+dendro-climatical interactions}}
+
+\author[aut1]{W. Lara\corref{cor1}\fnref{fn1}}
+%% \author[aut1,aut2]{W. Lara\corref{cor1}\fnref{fn1}}
+\author[aut1]{F. Bravo}
+%% \author[focal,aut2]{C. A.  Sierra }
+\cortext[cor1]{Corresponding author}
+
+\fntext[fn1]{\emph{E-mail address}:
+  \href{mailto:wilson.lara@alumnos.uva.es}{wilson.lara@alumnos.uva.es}
+  (W.Lara)}
+
+\address[aut1]{Sustainable Forest Management Research
+  Institute,UVA-INIA, Avenida Madrid, s/n, 34071, Palencia, Spain}
+
+%% \address[focal]{Department of Biogeochemical Processes, Max Planck
+%%   Institute for Biogeochemistry, Hans-Kn\"oll-Stra\ss e 10, 07745,
+%%   Jena, Germany}
+
+%% \address[aut2]{Research Center on Ecosystems and Global Change,
+%%   Carbono \& Bosques $($C\&B$)$, Calle 51A, N$^o$ 72-23, Int: 601,
+%%   050034, Medell{\'i}n, Colombia}
+
+\begin{abstract}
+\end{abstract}
+\begin{keyword}
+\end{keyword}
+\end{frontmatter}
+
+\linenumbers
+\section{Introduction}\label{sec:intro}
+
+
+\section{Package requirements and installation}
+Performance of {\tt biodRy} has been successfully tested in the binary
+distributions of the base system of linux --Debian, Redhat, Suse, and
+Ubuntu-- and the contributed packages for Windows and MacIntosh (see
+the checks of the package on CRAN). Up to now the package only depends
+on two other R packages in CRAN: \verb@nlme@ \citep{Pinheiro2000}, and
+\verb@ecodist@\citep{Goslee2007}. Package \verb@nlme@ is used to
+extract residuals of the modeled growth with linear mixed effects
+models (detrending), and the package \verb@ecodist@ is used to compute
+Mantel correlograms between models of tree growth and aridity.
+
+The package can be installed from CRAN within an R session with the
+command: \verb@install.packages('biodRy')@. Once the package has been
+installed, it can be loaded in R environment with any of the commands:
+{\tt require('biodRy')} or {\tt library('biodRy')}. Both
+dependences: {\tt nlme} and {\tt ecodist} are automatically loaded in R
+environment after the package has been required. We recommend to run
+the examples in the package documentation to obtain a better
+understanding of the descriptions provided in this manuscript.
+
+\subsection{Inputs}\label{sec:inputs}
+
+{\tt biodRy} processes multilevel data frames (MDFs) containing
+serial records in initial columns, followed by recorded times (i.e.,
+moths, years, relative times, etc.), and ended with factor-column
+levels, with factors being ordered from lower levels (usually a
+core-sample replicate, or an annual set of monthly meteorological
+records) to higher levels in sampling hierarchy (i.e., plots, sites,
+or other spatial units).
+
+Two exaples of MDFs are found in datasets: {\tt Prings05} and {\tt
+  PTclim05} provided with the package. Former dataset, {\tt Prings05},
+contains eight series of tree-ring widths (mm year$^{-1}$) of maritime
+pine (\textit{Pinus pinaster}), with recorded years spanning from 1810
+to 2005. Ring widths in such a dataset were measured by processing
+image sections of polished-core samples (5 mm diameter) with
+R-package: {\tt measuRing} \citep{Lara2015}. The cores were sampled
+from dominant trees of two sites, with sample plots being located on
+both: northern Spain (plot code: P44005) and center-east portion of
+the same country (plot code: P16106). Two trees were selected by plot,
+and two core samples were extracted by tree. Consequently, the sample
+design defined three levels: sample in tree on plot (plot level),
+sample in tree (tree level), and sample level. 
+
+The second data set, {\tt PTclim05}, consists of two series of monthly
+mean temperatures ($^{\circ}$C month$^{-1}$) and monthly precipitation
+sums (mm month$^{-1}$), with recorded months beginning at January and
+ending at December, and observed years spanning from 1951 to
+2005. Climatic series are labeled with the code names of correspondant
+plots, with labels defining one sample level (plot).
+
+Besides these MDFs, {\tt numeric} vector {\tt Pradii03} in examples of
+the package contains inside-bark radii, measured at trees in described
+plots in 2003 (mm). This radial vector was obtained from the over-bark
+diameters at breast height (cm), by developing allometric estimation
+of inside-bark diameters from the over-bark diameters. Names of the
+vector correspond to labels in {\tt Prings05} at tree level. This
+vector is used by algorithm to scale the cummulative tree growth. Some
+times processed cores do not to contain initial rings from the
+pits. These samples lack of information about initial states of
+growth, and altere scales of the modeled tree growth.
+
+These datasets illustrate required inputs of {\tt biodRy}, and
+are used in following sections to better explain implementation of
+the package.
+
+\section{Algorithm description}
+R-package {\tt biodRy} holds two function types to process the MDFs:
+one-level functions, and multilevel functions. The one-level functions
+process recorded series at one specific sample level: i.e., tree rings
+in a sample replicate, or montly mean temperatures recorded during a
+year.  However, these simple functions can only be used to process
+MDFs if they are implemented by multilevel functions. Both kind of
+functions are explained in following sections.
+
+\subsection{One-level functions}\label{sec:onelev}
+
+One-level functions are defined here as simple routines that can only
+be evaluated at one specific level. Such functions are implemented by
+multilevel functions (Section \ref{sec:mlev}) to model MDFs. This
+section explains most important one-level functions in the package:
+{\tt rtimes}, {\tt scacum}, {\tt moveYr}, {\tt amod}, and {\tt wlai}.
+
+Function {\tt rtimes} computes relative times from 1 to number of
+observed years of a series, with names of the series being recorded
+years.  These relative times can sinchronized by extracting only
+duplicated times and replacing unique times with {\tt NA}. Duplicated
+values are controlled with default argument {\tt only.dup =
+  TRUE}. This sinchronization improves the convergence of LME models
+during detrending process of the series (extraction of residuals) and
+avoids biases from artificial increases/decreases in growth rates
+\citep{Bowman2013}.
+
+The second function, {\tt scacum}, implements {\tt cumsum} of
+R-package {\tt base} to compute radial growth. Cummulative sums only
+represent such radial growth if the tree pits has been sampled. When
+these pits have not been sampled, then the cummulative sums should be
+scaled on a reference inside-bark radious measured at any year during
+the sampled spam. Reference radious and measured year can be specified
+with arguments {\tt y} and {\tt z}, respectively.
+
+Third function {\tt amod} uses parameters of simple allometric model:
+$y=a(2x)^b$, with $a,b$ being constants, and $x$ being
+scaled-cummulative radial increments, to derive other dendrometric
+variables. Such parameters are controled with argument {\tt mp}. For
+instance, default {\tt mp = c(0.5,1)} maintains the radial increments;
+{\tt mp = c(1,1)} produces diameters; and {\tt mp = c(0.25 * pi,2)}
+computes basal areas. Besides, argument {\tt mp} can have more than
+two parameters: $c(a_1,b_1,a_2,b_2,\cdots, a_n,b_n)$, with $n$ being
+the number of times that allometric model is recursively
+implemented. This recursive evaluation is useful to derive variables
+which depend on other allometric covariables: i.e parameters in two
+allometric models would be implemented to recursively compute
+over-bark diameters and then tree biomasses. After dendrometric
+variable is computed, the increments of such a variable are recomputed
+by implementing {\tt setdiff} of R-package {\tt base}. Finally, SI
+units of processed cummulative-radial increments can be transformed
+with argument {\tt un = c(from, to)}, with available units defined in
+Table (\ref{tab:gmod}).
+
+Function {\tt moveYr} computes seasonal years from calendar
+years. This function processes a {\tt numeric} vector of repeated
+years with vector names being {\tt character} months in {\tt
+  month.abb} or {\tt month.name} (R-package base), or a {\tt
+  data.frame} object with factor-level columns of months and years,
+for each of such years can begin in a month different than {\tt
+  January}.
+
+Final function {\tt wlai} computes annual aridity indexes from
+Walter-Lieth diagrams (Fig). Areas between temperature and
+precipitation lines when precipitation exceeds temperature are
+calculated as indicators of moist seasons, and areas where temperature
+exceeds precipitation are calculated as indicator of dry season. The
+aridity index is defined as the quotient between the areas of dry and
+wet seasons. Those precipitations over 100 mm are scaled such that 1
+degree C is equal to 5 mm.
+
+\subsection{Multilevel functions}\label{sec:mlev}
+
+Multilevel functions are defined in this paper as those functions
+which operate on MDFs.  Package {\tt biodRy} implements four kind of
+multilevel functions: {\tt ringApply}, {\tt modelFrame}, {\tt
+  ringLme}, and {\tt muleMan}. These functions are explained below to
+get a better understanding of the package. However, most of the
+procedures developed by these functions can be implemented with ony
+two of them : {\tt modelFrame} and {\tt muleMan}.
+
+Function {\tt ringApply} is a wrapper of the higher-order function
+{\tt Map} (R-package base) aimed to apply individual one-level
+functions at specific levels in the MDF, and preserve initial
+factor-level structure in the outputs. Function arguments should be
+formulated as suggested in {\tt mapply}, with no vectorized arguments
+being stored in a {\tt MoreArgs} list. For instance:
+
+\begin{verbatim}
+R:> data(PTclim05)
+R:> climOct <- ringApply(
+                         rd = PTclim05,
+                         lv = 'year',
+                         fn = 'moveYr',
+                         MoreArgs = list(
+                                         ini.mnt = 'Oct'           
+                                        ),
+                        )
+\end{verbatim}
+
+where {\tt rd} is the processed MDF; {\tt lv} is either the name or
+number position of the evaluated level; {\tt fn} is the implemented
+one-level function; and, {\tt MoreArgs} contains arguments of the
+one-level function. In this case we have computed seasonal years in
+MDF {\tt PTclim05}, with years beginning at October.
+
+Recursive function {\tt modelFrame} implements {\tt ringApply} by
+default to simultaneously evaluate diverse one-level functions on the
+MDF (see example in Section \ref{sec:growth}). Consequently, arguments
+not to be vectorized should also be specified in a {\tt MoreArgs}
+list.
+
+Modeled MDFs from {\tt modelFrame} can be normalized (detrending of
+series) by fitting linear mixed-effects models with function {\tt
+  ringLme}. Such a routine implements methods from R-package {\tt
+  nlme}. Two kind of model formulas are available: 'lmeForm' and
+'tdForm', these characters implement functions with same names (see
+manual of R-package {\tt biodRy}). Users can develop their own LME
+formulas by modifying arguments in any of these methods. After LME
+models are fitted, they can be extended by modeling heteroscedasticity
+and autocorrelation of the residuals. Nevertheless, such residual
+modeling would take long time depending on the complexity of the
+modeled levels.
+
+Two objects from {\tt modelFrame} which intersect in a recorded span
+and have one sample level in common can be compared with multilevel
+function {\tt muleMan}. This function develops mantel correlograms by
+level by implementing methods from R-package {\tt ecodist}.
+
+\section{Multilevel modeling}
+
+Package {\tt biodRy} involves diverse routines to process
+MDFs. Nevertheless, only two functions are necessary to model
+dendroclimatical interactions: the recursive function {\tt
+  modelFrame}, and the comparative function {\tt muleMan}. Former
+recursive function is used to model MDFs and the comparative function
+is implemented to compare the modeled MDFs.
+
+Most of the parameters in {\tt modelFrame} have defaults, being only
+required specification of an MDF in argument {\tt rd}. Nevertheless,
+this function has four optional parameters: three {\tt list}
+arguments: {\tt lv}, {\tt fn}, and {\tt MoreArgs}, and a {\tt
+  character} method in argument {\tt form}. These {\tt list} arguments
+make algorithm to recursively evaluate one-level functions in {\tt fn}
+at levels in {\tt lv} with parameters of the functions defined in {\tt
+  MoreArgs}. The {\tt character} method {\tt form} is used to
+normalize the modeled series by detrending such series with linear
+mixed-effects models. If the above mentioned arguments and are not
+specified, function {\tt modelFrame} uses default arguments in
+packageto to model radial increments without normalization of series.
+
+
+Following sections explain use of such functions.
+
+\subsection{Tree-growth modeling}\label{sec:growth}
+
+Modeling of tree growth is carried out with recursive function {\tt
+  modelFrame}. This routine uses allometric parameters to model
+several tree-growth variables: tree diameters, basal areas, tree
+biomasses, etc., and to detrend the modeled tree growth. Overall
+procedure can be controlled with diverse parameters (Tables
+\ref{tab:onefn}, and \ref{tab:gmod}), with number of required
+arguments depending on complexity of the model. For instance, the
+routine:
+
+\begin{verbatim}
+R:> data(Prings05)
+R:> data(Pradii03)
+R:> diamod <- modelFrame(
+                         rd = Prings05,
+                         lv = list(2,1,1),
+                         fn = list('rtimes','scacum','amod'),
+                         MoreArgs = list(
+                                         z  = 2003,           
+                                         mp = c(1,1),         
+                                         un = c('mm','cm')    
+                                        ),
+                         y  = Pradii03,
+                         form = 'tdForm'              
+                       )
+\end{verbatim}
+
+produces object {\tt diamod}: a model of detrended diametric growth
+(cm), by implementing three one-level functions: {\tt rtimes}, {\tt
+  scacum}, and {\tt amod} on the MDF {\tt Prings05}. 
+
+%% Besides the {\tt Prings05} MDF contained in argument {\tt rd}, five
+%% additional parameters are required: three {\tt list} arguments ({\tt
+%%   lv}, {\tt fn}, and {\tt MoreArgs}), one {\tt numeric} vector ({\tt
+%%   y}), and a detrending formula ({\tt form}).
+
+%% The above mentioned {\tt list} arguments make algorithm to recursively
+%% evaluate functions in {\tt fn} at levels in {\tt lv} with parameters
+%% defined in {\tt MoreArgs}. 
+For the case of the example, the function
+{\tt rtimes} is evaluated at the second position of factor-column
+levels in {\tt Prings05} ('tree' level), and both: {\tt scacum} and
+{\tt amod} are evaluated at first position of such factor columns
+('sample' level). The {\tt MoreArgs} list in {\tt diamod} contains the
+arguments of functions in {\tt fn} that do not change during the
+within-level evaluation of the functions. If any of these arguments
+changes in evaluated levels (parameters to vectorize over) then it
+should be formulated outside the {\tt MoreArgs} list.
+
+Vector {\tt y = Pradii03} contains the reference radii measured on
+2003. As a different radious was measured on each tree, this argument
+was formulated outside the {\tt moreArgs} list. An important feature
+of the recursive function {\tt modelFrame} is that reference radii can
+be vectorized even if radii were not measure at lowest level. Such is
+the case of the example, where the reference radii where measured at
+tree level.
+
+Argument {\tt form} is used to specify a method to normalize the
+modeled growth. Two methods are available in the package: 'tdForm' and
+'lmeForm'. Former method implements a semilogarithmic model according
+to linear generalization of growth from \cite{Zeide1993}, and second
+method fits a simple linear model. Parameters in model methods can be
+changed by specification of other argumets in each of the formulas
+with similar names (see manual of R-package: {\tt biodRy}), In such a
+cases, the formula argumets should be formulated outside the {\tt
+  moreArgs} list.  When {\tt form = NULL} then modeled growth is not
+detrended.
+
+
+\subsection{Aridity modeling}\label{sec:armod}
+
+Modeling of drought from MDF {\tt PTclim05} can also be developed with
+function {\tt modelFrame}. Formulation of parameters is similar to
+that explained in the modeling of tree growth (see Section
+\ref{sec:growth}), but two new one-level functions are assessed at a
+common temporal level:
+
+\begin{verbatim}
+  R:> drought <- modelFrame(
+                            rd = PTclim05,
+                            lv = list('year','year'),
+                            fn = list('moveYr','wlai'),
+                            form = 'lmeForm'              
+                           )
+\end{verbatim}
+
+ Functions {\tt moveYr} and {\tt wlai} computes seasonal years from
+ default month 'October' and calculates annual aridity indexes from
+ Walter-Lieth diagrams for each seasonal year. Such functions were
+ evaluated at the temporal level 'year'. As default values in
+ functions were maintained, there was no necessity to specify required
+ arguments in a {\tt MoreArgs} list.
+
+\subsection{{\tt ModelFrame} outputs}
+Evaluation of function {\tt modelFrame} produces either a data frame
+or a list. The model is a data frame when argument {\tt form =
+  NULL}. This data frame contains the processed series of growth and
+preserves the temporal and factorial levels of initial MDF. When {\tt
+  form = 'tdForm'} or {\tt form = 'lmeForm'} then output es an {\tt
+  lmeObject}: a list containing all the parameters of an LME model.
+dataset.
+
+
+
+\section{Multilevel comparison}
+
+{\tt biodRy} implements multivariate comparison of the modeled MDFs by
+computing similarity matrices and comparing such matrices with Mantel
+correlograms with function {\tt muleMan}.
+
+\subsection{{\tt muleMan} outputs}
+Evaluation of function {\tt modelFrame} produces either a data frame
+or a list. The model is a data frame when argument {\tt form =
+  NULL}. This data frame contains the processed series of growth and
+preserves the temporal and factorial levels of initial MDF. When {\tt
+  form = 'tdForm'} or {\tt form = 'lmeForm'} then output es an {\tt
+  lmeObject}: a list containing all the parameters of an LME model.
+dataset.
+\section{Acknowledgments}
+
+We are thankful to researchers of the Sustainable Forest Management
+Research Institute, UVa-INIA for providing support in core sampling
+and for giving ideas related to the development of the algorithm; in
+particular Cristobal Ordo\~nez, and Ana de Luca. We also would like to
+thank the anonymous reviewers for their suggestions and
+comments. This research has been supported with funds from the
+Colombian government (Colciencias) within the framework of the
+National Program for Doctoral Studies Abroad (year 2012, number 568).
+
+\newpage
+\section{\refname}
+\bibliographystyle{model2-names}
+\bibliography{bPaper.bib}
+
+\clearpage
+\begin{figure}\centering
+\includegraphics[scale=1.15,trim=20mm 0mm 20mm 0mm]{bfdots}
+\caption{Arguments in functions of {\tt biodRy}. The ellipsis term
+  means that a function can pass arguments to the previous function.}
+\label{fig:fdots} 
+\end{figure}
+
+\clearpage
+\begin{figure}\centering
+\includegraphics[scale=0.75,trim=20mm 0mm 20mm 0mm]{diam} 
+\caption{Normalized diameters at sample level.}
+\label{fig:diam} 
+\end{figure}
+
+\clearpage
+\begin{figure}\centering
+\includegraphics[scale=0.75,trim=20mm 0mm 20mm 0mm]{arid} 
+\caption{Normalized Walter-Lieth aridity indexes at plot level.}
+\label{fig:fdots} 
+\end{figure}
+
+\clearpage
+\begin{figure}\centering
+\includegraphics[scale=0.75,trim=20mm 0mm 20mm 0mm]{mant} 
+\caption{Mantel correlograms at plot level.}
+\label{fig:mant} 
+\end{figure}
+
+
+
+\clearpage
+\begin{table}
+\scriptsize
+\centering
+\caption{One-level functions to be evalluated in {\tt
+    modelFrame}. Five functions are available: {\tt amod}: allometric
+  modeling. {\tt moveYr}: seasonal years. {\tt rtimes}: sinchronized
+  relative times. {\tt sacum}: scaled-cummulative sums. {\tt wlai}:
+  Walter-Lieth aridity index. See examples in R-manual of {\tt biodRy}
+  to use these functions independently.}
+\label{tab:onefn}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{llp{8.5cm}}
+\toprule 
+Function & Arguments & Definition in {\tt biodRy} manual\\ 
+\midrule 
+
+%% \verb@amod@ & {\tt cs} & {\tt numeric} vector of scaled-cummulative
+%% sums such as that produced by {\tt scacum}. \\
+
+\verb@amod@ & {\tt mp} & {\tt numeric}. vector with allometric
+parameters. Different dendrometric variables can be computed; for
+example, default {\tt c(0.5,1)} maintains the original radii, {\tt
+  c(1,1)} produces diameters, and {\tt c(0.25 * pi,2)} computes basal
+areas. This argument can have more than two parameters: {\tt
+  c(a1,b1,a2,b2, ..., an,bn)}, with {\tt n} being the number of times
+that allometric model will be recursively implemented. \\
+
+ & {\tt un} & {\tt NULL}, or bidimensional {\tt character} vector with
+the form {\tt c(initial, final)} to transform SI units of the
+processed variable. The SI units can be expressed in micrometers {\tt
+  'mmm'}, milimeters {\tt 'mm'}, centimeters {\tt 'cm'}, decimeters
+{\tt 'dm'}, or meters {\tt 'm'}. If {\tt NULL} then original units are
+maintained. \\
+
+%% \verb@levexp@ & {\tt x} & numeric vector with names of the vector
+%% representing the levels to be matched. \\
+
+%%  & {\tt levels} & {\tt data.frame} with factor-level columns, or
+%% {\tt character} vector of levels. \\
+
+%% \verb@moveYr@ & {\tt cd} & {\tt data.frame} object with
+%% factor-level columns of months and years, or numeric vector of
+%% repeated years with vector names being the months. \\
+
+\verb@moveYr@ & {\tt ini.mnt} & {\tt character} of initial month of
+the year with character months being defined either in {\tt month.abb}
+or {\tt month.name} (R-package {\tt base}), or numeric value from 1
+to 12. Default 'Oct' produces years to begin in October. \\
+
+%% \verb@rtimes@ & {\tt x} & numeric vector with names representing the
+%% formation years, or multilevel data frame containing a column of
+%% years.\\
+
+ \verb@rtimes@ & {\tt only.dup} & {\tt logical}. Extract only relative
+ times that are duplicated. If {\tt TRUE} then unique times are
+ replaced with {\tt NA}. If all computed times are unique then this
+ argument is ignored. \\
+
+%% \verb@scacum@ & {\tt x} & numeric vector with vector names being
+%% ordered on time.\\
+
+\verb@scacum@ & {\tt y} & {\tt numeric} constant or vector to scale
+the vector. Cummulative values of the numeric vector are first
+computed with cumsum, and then scaled on this value. If {\tt NA} then
+such cummulative sums are not scaled.\\
+
+ & {\tt z} & {\tt NA} or numeric constant in range of the vector names
+to sqcale the cummulative values. If {\tt NA} then maximun value in
+such a range is used.\\
+
+%% \verb@wlai@ & {\tt cd} & {\tt data.frame} object with annual
+%% climatic records of monthly precipitation sums (mm month$^{-1}$),
+%% and monthly average temperatures ($^{\circ}$C month$^{-1}$), with
+%% row names being month names. \\
+
+\verb@wlai@ & {\tt sqt} & {\tt logical}. Print the square root of the
+aridity index. If {\tt TRUE} then computed aridity index is normalized
+with a square root transformation. \\
+
+ & {\tt fig} & {\tt logical}. Plot the Walter-Lieth diagram.\\
+
+ & $\cdots$ & Further arguments to be passed to {\tt plot}.\\
+
+\bottomrule \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}
+%% \renewcommand{\arraystretch}{1.9}
+\scriptsize
+\centering
+\caption{Arguments in {\tt modelFrame} used to model diametric growth
+  (cm).  The object {\tt Prings05} correspond to a multilevel data
+  frame with annual tree-ring widths (mm), one temporal level: 'year',
+  and three sample levels: 'sample', 'tree', and 'plot'. Bullet symbol
+  (\textsuperscript{\textbullet}) indicate default arguments in
+  functions, and dagger symbol (\textsuperscript{\textdagger})
+  indicate arguments that should be formulated in a 'MoreArgs'
+  list. Names of parent functions are written, in alphabetical order,
+  among brackets [ ] (see manual of R-package: {\tt biodRy} for more
+  details about such functions).}  \renewcommand{\arraystretch}{1.4}
+\label{tab:gmod}
+\begin{tabular}{lp{9.5cm}}
+\toprule 
+Arguments &Description in R manual. [ parent function(s) ].\\  
+\midrule
+
+{\tt rd = Prings05} & \indent {\tt data.frame} object with tree-ring
+series (TRS) and factor levels (FL). [ {\tt arguSelect}, {\tt levexp},
+  {\tt lmeForm}, {\tt ringApply}, {\tt ringLme}, {\tt shiftFrame},
+  {\tt splitFrame}, {\tt tdForm} ].\\
+
+{\tt lv = list(2,1,1)} \textsuperscript{\textbullet}&\indent List of
+{\tt numeric} positions in FL, or {\tt character} names of such
+columns, for recursive implementation of functions in {\tt fn}. [ {\tt
+    ringApply}, {\tt splitFrame} ].\\
+
+{\tt fn} \textsuperscript{\textbullet}&\indent Default {\tt fn =
+  list('rtimes','scacum','amod')}. List of {\tt character} nameqs of
+functions to be recursivelly implemented. [ {\tt ringApply} ].\\
+
+{\tt only.dup = TRUE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. Sinchronize the computed relative times by replacing
+unique values with {\tt NA}. [ {\tt rtimes} ].\\
+
+{\tt y = Pradii03}&\indent {\tt NA} or {\tt numeric} vector to scale
+the TRS. If {\tt NA} then cummulative sums are computed but not
+scaled. [ {\tt scacum} ].\\
+
+{\tt z = 2003} \textsuperscript{\textdagger}&\indent {\tt NA} or {\tt
+  numeric} constant in range of the vector names. If {\tt NA} then
+maximun value in such a range is used. [ {\tt scacum} ].\\
+
+{\tt form = 'tdForm'}&\indent {\tt character} or {\tt {\tt
+    NULL}}. Name of a linear-mixed-effects formula (LME formula) used
+to detrend the modeled tree growth. [ {\tt ringLme} ].\\
+
+%% {\tt prim.cov = FALSE}&\indent {\tt logical}. Implement a primary
+%% covariate form: '~ cov'. If {\tt FALSE} then a complete formula:
+%% 'resp ~ cov | group' is implemented. [ {\tt tdForm} ]\\
+
+{\tt on.time = TRUE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. If {\tt TRUE} then detrending is developed on the relative
+time. If {\tt FALSE} then the observed years are used. [ {\tt tdForm}
+].\\
+
+{\tt log.t = FALSE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. If {\tt FALSE} then f(t) = t. If {\tt TRUE} then f(t) =
+ln(t). [ {\tt ringLme}, {\tt tdForm} ].\\
+
+%% {\tt lev.rm = NULL} \textsuperscript{\textbullet}&\indent {\tt {\tt
+%% NULL}} or {\tt character}. Name of factor-level column to be
+%% removed from the formula. [ {\tt tdForm} ].\\
+ 
+{\tt mp = c(1,1)} \textsuperscript{\textdagger}&\indent {\tt
+  numeric}. Allometric parameters to compute tree diameters from
+TRS. [ {\tt amod} ].\\
+
+{\tt un = c('mm','cm')} \textsuperscript{\textdagger}&\indent {\tt
+  {\tt NULL}} or bidimensional {\tt character} to transform SI units
+of the processed variable. The SI units can be expressed in
+micrometers {\tt 'mmm'}, milimeters {\tt 'mm'}, centimeters {\tt
+  'cm'}, decimeters {\tt 'dm'}, or meters {\tt 'm'}. If {\tt NULL}
+then original units are maintained.[ {\tt amod} ].\\
+
+{\tt var.mod = FALSE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. If {\tt TRUE} then the fitted model is extended by
+modeling residual heteroscedaticity with 'varConstPower' class in {\tt
+  nlme}. [ {\tt ringLme} ].\\
+
+{\tt arma.mod = FALSE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. If {\tt TRUE} then the fitted model is extended by
+modeling residual autocorrelation with class 'corARMA' in {\tt nlme},
+with {\tt p = 1} and {\tt q = 1}, which models residual
+autocorrelation for lags $\geq2$. [ {\tt ringLme} ].\\
+
+{\tt res.data = TRUE} \textsuperscript{\textbullet}&\indent {\tt
+  logical}. If {\tt TRUE} then a data frame of name 'resid' is added
+to output list. [ {\tt ringLme} ].\\
+
+\bottomrule %% \hline
+\end{tabular},
+\end{table}
+
+
+
+\end{document}
