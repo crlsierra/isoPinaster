@@ -1,0 +1,34 @@
+% define packages here
+\usepackage{textcomp}
+\usepackage{lineno}
+\usepackage{listings}
+\usepackage{array} 
+\usepackage{graphicx}
+\usepackage{upquote}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{pdflscape}
+\definecolor{ligth-gray}{gray}{0.3}
+\usepackage{fancyvrb}
+%% \fvset{formatcom =\color{ligth-gray},
+\fvset{formatcom =\color{blue},
+fontsize=\footnotesize,xleftmargin=10mm}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+ 
+\usepackage{caption}
+\captionsetup[table]{font=footnotesize,
+skip=10pt,labelfont=bf,format=hang,
+justification = justified,
+margin = 0pt}
+\usepackage{amsmath}
+\usepackage{tabu}
+%% \usepackage{doi}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{filecontents}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=Violet,
+  linkcolor=Red,
+  urlcolor=Blue}
