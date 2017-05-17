@@ -4,7 +4,7 @@
 %% define acronyms here
 \include{mymacrosIpaper}
 % include abbreviations
-% \include{myabbrev}
+\include{myaccronIpinaster}
 
 \begin{document}
 \begin{frontmatter}
@@ -66,45 +66,47 @@ and warm summers and cool to mild winters. Mean annual temperature is
 about 11 $^{\circ}$C and mean annual precipitation is aprox. 562 mm.
 
 \subsection{Core sampling}
-Dominant trees in ten sites on the maritime pine forests where core
-sampled (5 mm diameter) at chest height (1.3 m). The sample trees were
-located in five sites on northern study-site edge and other five sites
-on the center-east edge. Two dominant trees were sampled by site, and
-two core samples were extracted by tree. The core samples were air
-dried, sanded, and scanned (1000:1600 ppi). The tree-ring widhts in
-the scanned images where measured with R-package: {\tt measuRing}
-\citep{Lara2015}, and statistically controlled with {\tt dplR} package
-\citep{Bunn2010}.
+Dominant trees of maritime pine growing in ten locations in the study
+site where core sampled (5 mm diameter) at chest height (1.3 m). These
+were located in five locations of north-central edge of the sudy site
+and the other five locations were established on the eastern edge. Two
+dominant trees were sampled by site, and two core samples were
+extracted from each tree. The core samples were air dried, sanded, and
+scanned (1000:1600 ppi). \glspl{TRW} in the scanned images where
+measured and statistically controlled with R-packages {\tt measuRing}
+\citep{Lara2015} and {\tt dplR} \citep{Bunn2010}, respectivelly.
 
-A master chronology of \textit{P. pinaster} with strong common signal
-(EPS $>$ 0.95, SNR $>$ 22), developed with core samples of 150 trees
-on ten sites of study area \citep{Bogino2008}, was used to develop
-statistical control of the measured rings. The cross-dating process
-was developed on four common regions, defined after clustering
-tree-dimensional coordinates of the sites, with each of the clusters
-having sites at most 80 km of closeness (Figure \ref{fig:clust}).
+A master chronology of 150 trees of \textit{P. pinaster} for the study
+area \citep{Bogino2008} was used to develop the statistical control of
+the \gls{TRW}. The chronology has strong common signal (EPS $>$ 0.95,
+SNR $>$ 22). The cross-dating process was controlled by grouping the
+data in four common regions, which were defined after clustering the
+tree-dimensional coordinates of the sampling locations, with each of
+the clusters having sites at most 80 km of closeness (Figure
+\ref{fig:clust}).
+%cluster distances in plot must be corrected
 
 \subsection{climatic data}
 We processed a high-resolution gridded dataset (0.11$^{\circ}$ resol.)
 of monthly mean temperatures for peninsular Spain: Spain02,
-\citep{Herrera2015} to compute Standardized Precipitation Indexes
-(SPI) across Ebro basin (1971 - 2010). Proyection of UTM coordinates
-of the sample plots to coordinate system in climate algorithm was
-developed with R-package {\tt rgdal} \citep{Bivand2015}. The SPIs were
-modeled from the extracted spatial precipitations with R-packages: {\tt
-  raster}\citep{Hijmans2015} and {\tt spi} \citep{Neves2012}.
+\citep{Herrera2015} across Ebro basin (1971 - 2010). Proyection of UTM
+coordinates of the sample plots to coordinate system in climate
+algorithm was developed with R-package {\tt rgdal}
+\citep{Bivand2015}. % The SPIs were modeled from the extracted spatial
+% precipitations with R-packages: {\tt raster}\citep{Hijmans2015} and
+% {\tt spi} \citep{Neves2012}.
 
 \subsection{$^{13}$C-late-wood signatures}
-One core per site was used for isotopic analysis on late wood of the
-dated rings. Each latewood portion of rings was carefully separated
-from earlywood with a microtome. Only rings formed after 1974 were
-analysed. Whole wood was milled, an aliquot of 100 mg was packed in
-porous bags and used for cellulose extraction. The samples were washed
-in 5 percent NaOH solution twice for 2 h at 60 $^{\circ}$C in order to
-remove fats, oils, resins and hemicellulose. In a second step the
-lignin was removed with NaClO 2.7\% After each treatment the samples
-were washed with distilled water and then finally dried overnight at
-60 $^{\circ}$C.
+Isotopic analysis was developed in the late wood of one of the cores
+extracted in each sampling location. The late wood portions were
+carefully separated from the earlywood with a microtome. Only rings
+that were formed after 1974 were analysed. Whole wood was milled, an
+aliquot of 100 mg was packed in porous bags and used for cellulose
+extraction. The samples were washed in 5 percent NaOH solution twice
+for 2 h at 60 $^{\circ}$C in order to remove fats, oils, resins and
+hemicellulose. In a second step the lignin was removed with NaClO
+2.7\% After each treatment the samples were washed with distilled
+water and then finally dried overnight at 60 $^{\circ}$C.
 
 The $\delta^{13}$C was determined using an elemental analyser linked
 to an isotopic ratio mass spectrometer via a variable open split
