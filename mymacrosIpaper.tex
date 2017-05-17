@@ -1,0 +1,119 @@
+% define packages here
+\usepackage{acronym} %% using acronyms
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array} 
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{fancyvrb}
+\usepackage{filecontents}
+\usepackage{float}% [H] option for figures
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[acronym]{glossaries}% put after hyperref package
+\usepackage{imakeidx}
+\usepackage{lineno}
+\usepackage{listings}
+% \usepackage[round,sort]{natbib}
+\usepackage{paralist}
+\usepackage{pdflscape}
+\usepackage{siunitx}
+\usepackage{tabu}
+\usepackage{textcomp}
+\usepackage{upquote}
+\usepackage{xcolor}
+\usepackage{url}
+
+
+% define verbatim formulas
+\newcommand{\vv}[1]{{\tt #1}}
+
+
+% define caption parameters here
+\captionsetup[table]{font=footnotesize,
+skip=10pt,labelfont=bf,format=hang,
+justification = justified,
+margin = 0pt}
+
+% define verbatim parameters here
+\fvset{formatcom =\color{black},
+fontsize=\small,xleftmargin=10mm}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+
+% define some colors here
+\definecolor{light-gray}{gray}{0.3}
+\definecolor{uvacol}{HTML}{c51857}
+
+% color change of hyperlinks here
+% \hypersetup{ colorlinks, citecolor=uvacol, linkcolor=uvacol,
+%   urlcolor=black}
+\hypersetup{ colorlinks, citecolor=black, linkcolor=black,
+  urlcolor=black}
+
+% General setup for the package listings
+\lstset{ 
+aboveskip=10pt,
+belowskip=10pt,
+language=R,
+captionpos=b,
+% alsoletter={.}
+mathescape=false,
+basicstyle=\small\ttfamily,
+numbers=none,
+numberstyle=\tiny,
+% frame=single, % or tb
+rulecolor=\color{lightgray},
+tabsize=4,
+columns=fixed,
+showstringspaces=false,
+showtabs=false,
+keepspaces,
+commentstyle=\color{gray},
+keywordstyle=\color{black}
+}
+
+% R-code list
+\renewcommand{\lstlistingname}{R-code}
+\renewcommand\lstlistlistingname{R-code list}
+
+% Acronym list
+\makeglossaries
+\glossarystyle{long}
+\setlength{\glsdescwidth}{\hsize}
+% \glsaddall
+
+
+% % define packages here
+% \usepackage{textcomp}
+% \usepackage{lineno}
+% \usepackage{listings}
+% \usepackage{array} 
+% \usepackage{graphicx}
+% \usepackage{upquote}
+% \usepackage{booktabs}
+% \usepackage{xcolor}
+% \usepackage{pdflscape}
+% \definecolor{ligth-gray}{gray}{0.3}
+% \usepackage{fancyvrb}
+% %% \fvset{formatcom =\color{ligth-gray},
+% \fvset{formatcom =\color{blue},
+% fontsize=\footnotesize,xleftmargin=10mm}
+% \RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+ 
+% \usepackage{caption}
+% \captionsetup[table]{font=footnotesize,
+% skip=10pt,labelfont=bf,format=hang,
+% justification = justified,
+% margin = 0pt}
+% \usepackage{amsmath}
+% \usepackage{tabu}
+% %% \usepackage{doi}
+% \usepackage{url}
+% \usepackage{natbib}
+% \usepackage{filecontents}
+% \usepackage{hyperref}
+% \hypersetup{
+%   colorlinks,
+%   citecolor=Violet,
+%   linkcolor=Red,
+%   urlcolor=Blue}
