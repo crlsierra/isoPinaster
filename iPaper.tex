@@ -1,38 +1,10 @@
 \documentclass[review,authoryear]{elsarticle} 
 
-\usepackage{textcomp}
 \usepackage{lineno}
-\usepackage{listings}
-\usepackage{array} 
-\usepackage{graphicx}
-\usepackage{upquote}
-\usepackage{booktabs}
-\usepackage{xcolor}
-\definecolor{ligth-gray}{gray}{0.3}
-\usepackage{fancyvrb}
-%% \fvset{formatcom =\color{ligth-gray},
-\fvset{formatcom =\color{blue},
-fontsize=\footnotesize,xleftmargin=10mm}
-\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
- 
-\usepackage{caption}
-\captionsetup[table]{font=footnotesize,
-skip=10pt,labelfont=bf,format=hang,
-justification = justified,
-margin = 0pt}
-\usepackage{amsmath}
-\usepackage{tabu}
-%% \usepackage{doi}
-\usepackage{url}
-\usepackage{natbib}
-\usepackage{filecontents}
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks,
-  citecolor=Violet,
-  linkcolor=Red,
-  urlcolor=Blue}
-
+%% define acronyms here
+\include{mymacrosIpaper}
+% include abbreviations
+% \include{myabbrev}
 
 \begin{document}
 \begin{frontmatter}
@@ -69,6 +41,10 @@ margin = 0pt}
 
 \linenumbers
 \section{Introduction}\label{sec:intro}
+
+This study aims to study long-term effects of drought on tree growth
+and isotopic discrimination of \textit{P. pinaster} in north and
+east-central Spain.
 
 \include{intro}
 
@@ -145,7 +121,6 @@ results of laboratory were presented in the $\delta$ notation:
 \delta = \left [ \left ( R_{sample}/R_{standard} \right )-1 \right ]\times 10^3 
 \end{equation}
 
-
 relative to the internationsl VPDB standard for cabon; where
 $R_{sample}$ and $R_{standard}$ is the fractions of $^{13}$C$/^{12}$C
 for the sample and the standard, respectively. The standard deviation
@@ -153,46 +128,71 @@ for the repeated analysis (commercial cellulose) was better than
 0.1. was better than 0.1 percent. The calibration versus VPDB was done
 by measuring IAEA USGS-24(graphite) and IAEA-CH7 (polyethylene).
 
-\subsection{Multilevel detrending}
-We detrended $\delta^{13}$C series and the extracted SPI with
-the R-package {\tt BIOdry} \citep{Lara2015b,Lara2013}. Such a package
-processes multilevel data frames (MDFs) containing serial records in
-initial columns, followed by recorded times (i.e., moths, years,
-relative times, etc.), and ended with factor-column levels, with
-factors being ordered from lower levels (usually a core-sample
-replicate, or an annual set of monthly meteorological records) to
-higher levels in sampling hierarchy (i.e., plots, sites, or other
-spatial units). 
+% \subsection{Multilevel detrending}
+% We detrended $\delta^{13}$C series and the extracted SPI with
+% the R-package {\tt BIOdry} \citep{Lara2015b,Lara2013}. Such a package
+% processes multilevel data frames (MDFs) containing serial records in
+% initial columns, followed by recorded times (i.e., moths, years,
+% relative times, etc.), and ended with factor-column levels, with
+% factors being ordered from lower levels (usually a core-sample
+% replicate, or an annual set of monthly meteorological records) to
+% higher levels in sampling hierarchy (i.e., plots, sites, or other
+% spatial units). 
 
-The package holds several functions but we implemented only two of
-them to develop the detrending process: {\tt modelFrame} and {\tt
-  muleMan}. The former function was implemented to normalize both:
-$\delta^{13}$C in late wood of the core samples and the SPI. This
-package normalizes the series by fitting linear mixed-effects models
-with function {\tt ringLme}, implementing methods in R-package {\tt
-  nlme}.
+% The package holds several functions but we implemented only two of
+% them to develop the detrending process: {\tt modelFrame} and {\tt
+%   muleMan}. The former function was implemented to normalize both:
+% $\delta^{13}$C in late wood of the core samples and the SPI. This
+% package normalizes the series by fitting linear mixed-effects models
+% with function {\tt ringLme}, implementing methods in R-package {\tt
+%   nlme}.
 
-Two kind of model formulas ara available in the package to assist the
-detrending process: 'lmeForm' and 'tdForm', these characters implement
-functions with same names (see manual of R-package {\tt BIOdry}). We
-used 'tdForm' to normalize the isotopes, and 'lmeForm' to center the
-SPI. The second function, {\tt muleMan}, was used to compute the the
-signatures between normalized $\delta^{13}$C of \textit{P. pinaster}
-late-wood and precipitation indexes via Multilevel correlograms:
-Mantel correlograms are computed from distance matrices of normalized
-series, and permutation tests \citep{Goslee2007}.
+% Two kind of model formulas ara available in the package to assist the
+% detrending process: 'lmeForm' and 'tdForm', these characters implement
+% functions with same names (see manual of R-package {\tt BIOdry}). We
+% used 'tdForm' to normalize the isotopes, and 'lmeForm' to center the
+% SPI. The second function, {\tt muleMan}, was used to compute the the
+% signatures between normalized $\delta^{13}$C of \textit{P. pinaster}
+% late-wood and precipitation indexes via Multilevel correlograms:
+% Mantel correlograms are computed from distance matrices of normalized
+% series, and permutation tests \citep{Goslee2007}.
+
+
 
 
 \section{Results}
+
+\subsection{dendroclimatic seasonal responses}
+
+Significance of seasonal responses of tree-diameter growth (TDG) to
+climate depended on the compared climatic variable. The TDG
+signifficantly responded to winter precipitations while relationships
+with the seasonal temperatures were not conclusive. The signifficant
+coefficients between TDG and within-winter precipitation were positive
+and stronger in southern- than in northern-study site. and occurred
+within a month of each other: i.e. February in the south, and Jannuary
+in north.
+
+Likewise, seasonal responses of ICW to climate on both site
+localization and the compared climatic variable.
+
+Likewise, the site localization determined relationships between ICW
+and the studied climatic variables. In northern-study site, The ICW
+signifficantly responded to summer temperatures. Non signifficant
+responses were evidenced between ICW and the studied seasonal
+temperatures of the north.
+
+
+
 
 %% Sample plots on Northern {Ebro} basin exhibited higher
 %% extremes of spi than sample plots on Southern protion of the basin
 %% (Figure \ref{fig:spis}).
 
-Intra-annual $^{13}$C-late-wood signatures (1974-2010) were
-signifficant during Junes (Figure \ref{fig:signjun}) and Augusts
-(Figure \ref{fig:sigaug}) of last 35 years. The resting simulated
-months were no signifficant and ommited from the analysis.
+% Intra-annual $^{13}$C-late-wood signatures (1974-2010) were
+% signifficant during Junes (Figure \ref{fig:signjun}) and Augusts
+% (Figure \ref{fig:sigaug}) of last 35 years. The resting simulated
+% months were no signifficant and ommited from the analysis.
 
 \newpage
 \section{\refname}
@@ -200,75 +200,134 @@ months were no signifficant and ommited from the analysis.
 \bibliography{iPaper.bib}
 
 \clearpage
+%poner los lugares de isótopos puntos negros
 \begin{figure}\centering
 \includegraphics[scale=0.5,trim=20mm 0mm 20mm 0mm]{map_03} 
-\caption{Study site}
+\caption{Study site. The green areas represent distribution of
+  \textit{P. pinaster} along Spain. The orange points represent
+  locations of tree-ring chronologies only}
 \label{fig:map_03} 
 \end{figure}
 
 \clearpage
 \begin{figure}\centering
-\includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{clust} 
-\caption{Relative geographic closeness between sample plots. Plots with
-  master series are indicated with m\_. Codes of sample plots begin with
-  initial letter of the species (\textit{P. pinaster}); following with
-  two digits in code indicating the province code: 42 corresponding to
-  \textit{Soria} on Northern protion of \textit{Ebro} river basin, and
-  16 being \textit{Cuenca} on Southern region of such a basin; last
-  three digits in codes indicate individual number of the sample
-  plot. Sample plots of master series have been indicated with the
-  letter m\_. Black dashed line splits distance dendrogram in the two
-  geographical portions of the river basin: North and South (distances
-  $>$ 1500 km); and the red dashed line defines four groups used to
-  statistically control (cross-dating) dendrochronological series
-  (distances $<$ 80 km).}
-\label{fig:clust} 
+\includegraphics[scale=0.7,trim=20mm 0mm 20mm 0mm]{RWIs} 
+\caption{Tree-ring-width chronologies of \textit{P. pinaster} trees
+  growing on north (upper-panel plots) and east-central Spain
+  (lower-panel plots). Trends in original chronologies (left-panel
+  plots) are subtracted (right-panel plots). Gray lines indicate
+  fluctuations, and red lines suggest average patterns. Sample depth
+  is the number of series available in each year.}
+\label{fig:RWIs} 
 \end{figure}
 
 \clearpage
 \begin{figure}\centering
-\includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{spis} 
-\caption{Series of standardized precipitation indexes (spi) on ten
-  sample plots of \textit{P. pinaster} located on Northern protion of
-  \textit{Ebro} river basin (42: \textit{Soria}) and on Southern
-  region of such a basin (16: \textit{Cuenca}). Panels are ordered
-  from plots with lower spi values (lower-left panel) to plots with
-  higher spi extremes (higher-right panel).See legend in Figure
-  \ref{fig:clust} for further explanation of both: codes and plot
-  locations.}
-\label{fig:spis} 
+\includegraphics[scale=0.7,trim=20mm 0mm 20mm 0mm]{ideltas} 
+\caption{Isotopic chronologies of \textit{P. pinaster} trees growing
+  on north (upper-panel plots) and east-central Spain (lower-panel
+  plots). Trends in original chronologies (left-panel plots) are
+  subtracted (right-panel plots). Gray lines indicate fluctuations,
+  and red lines suggest average patterns. Sample depth is the number
+  of series available in each year.}
+\label{fig:RWIs} 
 \end{figure}
 
 \clearpage
-\begin{figure}\centering
-\includegraphics[scale=0.9,trim=20mm 0mm 20mm 0mm]{isoYr}
-\caption{Normalized $\delta^{13}$C of
-  \textit{P. pinaster} late-wood in trees growing on Northern Ebro basin
-  (P42) and Southern portion of the basin (P16), Spain}
-\label{fig:isoyr} 
+% obn: cambiar south by east-central Spain
+\begin{landscape}
+\begin{figure}
+% \centering
+\begin{minipage}[b]{0.8\textwidth}
+\centering
+\includegraphics[width = \textwidth]{GrowthFunRes}
+\end{minipage}
+\begin{minipage}[b]{0.8\textwidth}
+\includegraphics[width = \textwidth]{IsoFunRes}
+\end{minipage}
+\label{fig:FunRes}
+\caption{Intra-annual response coefficients for precipitation and
+  temperature for tree-ring and isotopic chronologies of
+  \textit{P. pinaster}. The darker bars indicate signifficant
+  coefficients ($P\le0.05$), and the lines represent $95\%$-confidence
+  intervals.}
+  \end{figure}
+\end{landscape}
+
+\clearpage
+\begin{figure}
+\centering
+\includegraphics[scale=0.7,trim=20mm 0mm 20mm 0mm]{coherence1}
+\label{fig:coherence1}
+\caption{Wavelet coherency between signals of tree-ring widths and
+  standardized precipitation indexes. The colored scale indicate the
+  correlation between the two time series.}
 \end{figure}
+
+
+% \clearpage
+% \begin{figure}\centering
+% \includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{clust} 
+% \caption{Relative geographic closeness between sample plots. Plots with
+%   master series are indicated with m\_. Codes of sample plots begin with
+%   initial letter of the species (\textit{P. pinaster}); following with
+%   two digits in code indicating the province code: 42 corresponding to
+%   \textit{Soria} on Northern protion of \textit{Ebro} river basin, and
+%   16 being \textit{Cuenca} on Southern region of such a basin; last
+%   three digits in codes indicate individual number of the sample
+%   plot. Sample plots of master series have been indicated with the
+%   letter m\_. Black dashed line splits distance dendrogram in the two
+%   geographical portions of the river basin: North and South (distances
+%   $>$ 1500 km); and the red dashed line defines four groups used to
+%   statistically control (cross-dating) dendrochronological series
+%   (distances $<$ 80 km).}
+% \label{fig:clust} 
+% \end{figure}
+
+% \clearpage
+% \begin{figure}\centering
+% \includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{spis} 
+% \caption{Series of standardized precipitation indexes (spi) on ten
+%   sample plots of \textit{P. pinaster} located on Northern protion of
+%   \textit{Ebro} river basin (42: \textit{Soria}) and on Southern
+%   region of such a basin (16: \textit{Cuenca}). Panels are ordered
+%   from plots with lower spi values (lower-left panel) to plots with
+%   higher spi extremes (higher-right panel).See legend in Figure
+%   \ref{fig:clust} for further explanation of both: codes and plot
+%   locations.}
+% \label{fig:spis} 
+% \end{figure}
+
+% \clearpage
+% \begin{figure}\centering
+% \includegraphics[scale=0.9,trim=20mm 0mm 20mm 0mm]{isoYr}
+% \caption{Normalized $\delta^{13}$C of
+%   \textit{P. pinaster} late-wood in trees growing on Northern Ebro basin
+%   (P42) and Southern portion of the basin (P16), Spain}
+% \label{fig:isoyr} 
+% \end{figure}
 
  
-\clearpage
-\begin{figure}\centering
-\includegraphics[scale=0.9,trim=20mm 0mm 20mm 0mm]{mflucJun} 
-\caption{Signatures between normalized $\delta^{13}$C of
-  \textit{P. pinaster} late-wood and precipitation indexes
-  (June) from 1974 to 2010. Signatures where computed with Multilevel
-  correlograms. The Fluctuation lags where computed with Sturdges'
-  rule. $10^4$ permutation texts where developed on compared
-  fluctuation-distance matrices.}
-\label{fig:signjun} 
-\end{figure}
-\begin{figure}\centering
-\includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{mflucAug} 
-\caption{Signatures between normalized $\delta^{13}$C of
-  \textit{P. pinaster} late-wood and precipitation indexes
-  (August) from 1974 to 2010. Signatures where computed with Multilevel
-  correlograms. The Fluctuation lags where computed with Sturdges'
-  rule. $10^4$ permutation texts where developed on compared
-  fluctuation-distance matrices.}
-\label{fig:sigaug} 
-\end{figure}
+% \clearpage
+% \begin{figure}\centering
+% \includegraphics[scale=0.9,trim=20mm 0mm 20mm 0mm]{mflucJun} 
+% \caption{Signatures between normalized $\delta^{13}$C of
+%   \textit{P. pinaster} late-wood and precipitation indexes
+%   (June) from 1974 to 2010. Signatures where computed with Multilevel
+%   correlograms. The Fluctuation lags where computed with Sturdges'
+%   rule. $10^4$ permutation texts where developed on compared
+%   fluctuation-distance matrices.}
+% \label{fig:signjun} 
+% \end{figure}
+% \begin{figure}\centering
+% \includegraphics[scale=0.8,trim=20mm 0mm 20mm 0mm]{mflucAug} 
+% \caption{Signatures between normalized $\delta^{13}$C of
+%   \textit{P. pinaster} late-wood and precipitation indexes
+%   (August) from 1974 to 2010. Signatures where computed with Multilevel
+%   correlograms. The Fluctuation lags where computed with Sturdges'
+%   rule. $10^4$ permutation texts where developed on compared
+%   fluctuation-distance matrices.}
+% \label{fig:sigaug} 
+% \end{figure}
 
 \end{document}
