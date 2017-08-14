@@ -46,6 +46,22 @@
   Timestamp                = {2012.02.10}
 }
 
+@Article{Cazelles2008,
+  Title                    = {Wavelet analysis of ecological time series},
+  Author                   = {Cazelles, Bernard and Chavez, Mario and Berteaux, Dominique and M{\'e}nard, Fr{\'e}d{\'e}ric and Vik, Jon Olav and Jenouvrier, St{\'e}phanie and Stenseth, Nils C},
+  Journal                  = {Oecologia},
+  Year                     = {2008},
+  Number                   = {2},
+  Pages                    = {287--304},
+  Volume                   = {156},
+
+  __markedentry            = {[wilar:1]},
+  File                     = {Cazelles2008.pdf:Cazelles2008.pdf:PDF},
+  Owner                    = {wilar},
+  Publisher                = {Springer},
+  Timestamp                = {2016.11.18}
+}
+
 @Article{Goslee2007,
   Title                    = {The ecodist package for dissimilarity-based analysis of ecological data},
   Author                   = {Sarah C. Goslee and Dean L. Urban},

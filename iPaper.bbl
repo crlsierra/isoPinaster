@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -36,6 +36,17 @@
 \newblock \bibinfo{journal}{Dendrochronologia} \bibinfo{volume}{28},
   \bibinfo{pages}{251 -- 258}.
 \newblock \DOIprefix\doi{10.1016/j.dendro.2009.12.001}.
+%Type = Article
+\bibitem[{Cazelles et~al.(2008)Cazelles, Chavez, Berteaux, M{\'e}nard, Vik,
+  Jenouvrier and Stenseth}]{Cazelles2008}
+\bibinfo{author}{Cazelles, B.}, \bibinfo{author}{Chavez, M.},
+  \bibinfo{author}{Berteaux, D.}, \bibinfo{author}{M{\'e}nard, F.},
+  \bibinfo{author}{Vik, J.O.}, \bibinfo{author}{Jenouvrier, S.},
+  \bibinfo{author}{Stenseth, N.C.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Wavelet analysis of ecological time series}.
+\newblock \bibinfo{journal}{Oecologia} \bibinfo{volume}{156},
+  \bibinfo{pages}{287--304}.
+\newblock \DOIprefix\doi{10.1007/s00442-008-0993-2}.
 %Type = Article
 \bibitem[{Herrera et~al.(2015)Herrera, Fern{\'a}ndez and
   Guti{\'e}rrez}]{Herrera2015}

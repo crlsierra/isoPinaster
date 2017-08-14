@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.25)  14 AUG 2017 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.25)  14 AUG 2017 16:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1432,51 +1432,51 @@ res for penin-su-lar Spain
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\acrlong' on input line 102.
 
-[4]
+[4] [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 198.
+(hyperref)                removing `\acrlong' on input line 209.
 
-[5] [6] [7] (./iPaper.bbl) [8] <clust.pdf, id=207, 505.89pt x 505.89pt>
+[6] [7] [8] (./iPaper.bbl) [9] <clust.pdf, id=215, 505.89pt x 505.89pt>
 File: clust.pdf Graphic file (type pdf)
 
 <use clust.pdf>
-Package pdftex.def Info: clust.pdf used on input line 289.
+Package pdftex.def Info: clust.pdf used on input line 300.
 (pdftex.def)             Requested size: 313.66362pt x 404.71254pt.
- [9 <./clust.pdf>]
-<map_03.pdf, id=226, 845.1575pt x 597.23125pt>
+ [10 <./clust.pdf>]
+<map_03.pdf, id=234, 845.1575pt x 597.23125pt>
 File: map_03.pdf Graphic file (type pdf)
  <use map_03.pdf>
-Package pdftex.def Info: map_03.pdf used on input line 304.
+Package pdftex.def Info: map_03.pdf used on input line 315.
 (pdftex.def)             Requested size: 365.67236pt x 298.61488pt.
 
-Overfull \hbox (20.67236pt too wide) in paragraph at lines 304--307
+Overfull \hbox (20.67236pt too wide) in paragraph at lines 315--318
  [][] 
  []
 
-[10 <./map_03.pdf>] <RWIs.pdf, id=239, 505.89pt x 505.89pt>
+[11 <./map_03.pdf>] <RWIs.pdf, id=247, 505.89pt x 505.89pt>
 File: RWIs.pdf Graphic file (type pdf)
  <use RWIs.pdf>
-Package pdftex.def Info: RWIs.pdf used on input line 313.
+Package pdftex.def Info: RWIs.pdf used on input line 324.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
-[11 <./RWIs.pdf>] <ideltas.pdf, id=253, 505.89pt x 505.89pt>
+[12 <./RWIs.pdf>] <ideltas.pdf, id=261, 505.89pt x 505.89pt>
 File: ideltas.pdf Graphic file (type pdf)
  <use ideltas.pdf>
-Package pdftex.def Info: ideltas.pdf used on input line 325.
+Package pdftex.def Info: ideltas.pdf used on input line 336.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
-[12 <./ideltas.pdf>] <FunRes.pdf, id=266, 505.89pt x 505.89pt>
+[13 <./ideltas.pdf>] <FunRes.pdf, id=276, 505.89pt x 505.89pt>
 File: FunRes.pdf Graphic file (type pdf)
 
 <use FunRes.pdf>
-Package pdftex.def Info: FunRes.pdf used on input line 338.
+Package pdftex.def Info: FunRes.pdf used on input line 349.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
- [13 <./FunRes.pdf>]
-<coherence1.pdf, id=289, 505.89pt x 505.89pt>
+ [14 <./FunRes.pdf>]
+<coherence1.pdf, id=297, 505.89pt x 505.89pt>
 File: coherence1.pdf Graphic file (type pdf)
  <use coherence1.pdf>
-Package pdftex.def Info: coherence1.pdf used on input line 369.
+Package pdftex.def Info: coherence1.pdf used on input line 380.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
 
@@ -1488,25 +1488,25 @@ Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
-[14 <./coherence1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 433.
+[15 <./coherence1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 433.
  (./iPaper.aux (./intro.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 433.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 433.
 Package rerunfilecheck Info: File `iPaper.out' has not changed.
 (rerunfilecheck)             Checksum: 6407EF12C64CCA7F584EA389342D6ACA;793.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 433.
  ) 
 Here is how much of TeX's memory you used:
- 25330 strings out of 494953
- 447909 string characters out of 6180977
+ 25335 strings out of 494953
+ 447993 string characters out of 6180977
  592844 words of memory out of 5000000
- 28195 multiletter control sequences out of 15000+600000
+ 28198 multiletter control sequences out of 15000+600000
  15516 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  50i,9n,77p,10483b,815s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1541,10 +1541,10 @@ t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb>
-Output written on iPaper.pdf (14 pages, 8253702 bytes).
+Output written on iPaper.pdf (15 pages, 8254980 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 318 compressed objects within 4 object streams
- 51 named destinations out of 1000 (max. 500000)
+ 389 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
+ 53 named destinations out of 1000 (max. 500000)
  135 words of extra memory for PDF output out of 10000 (max. 10000000)
 
