@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.25)  17 MAY 2017 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.25)  14 AUG 2017 13:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1287,9 +1287,13 @@ Package glossaries Warning: Deprecated command \glossarystyle.
  I recommend you switch to \setglossarystyle unless you want to maintain backwa
 rd compatibility on input line 81.
 
-) (./iPaper.aux (./intro.aux)
+)
+\@input{myaccronIpinaster.aux}
+\openout2 = `myaccronIpinaster.aux'.
 
-LaTeX Warning: Label `fig:RWIs' multiply defined.
+(./myaccronIpinaster.tex) (./iPaper.aux (./intro.aux)
+
+LaTeX Warning: Label `eq:dC' multiply defined.
 
 )
 \openout1 = `iPaper.aux'.
@@ -1409,75 +1413,70 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
+
+
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 \openout2 = `intro.aux'.
 
  (./intro.tex) [2
 
-]
-
-LaTeX Warning: Reference `fig:clust' on page 3 undefined on input line 91.
-
-[3
+] [3
 
 ]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 103.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 103.
+Overfull \hbox (3.08408pt too wide) in paragraph at lines 92--101
+\OT1/cmr/m/n/10 cum-mu-la-tive pre-cip-i-ta-tions and monthly mean tem-per-a-tu
+res for penin-su-lar Spain
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 103.
+(hyperref)                removing `\acrlong' on input line 102.
 
-[4] [5] (./iPaper.bbl [6]) [7] <map_03.pdf, id=144, 845.1575pt x 597.23125pt>
+[4]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\acrlong' on input line 198.
+
+[5] [6] [7] (./iPaper.bbl) [8] <clust.pdf, id=207, 505.89pt x 505.89pt>
+File: clust.pdf Graphic file (type pdf)
+
+<use clust.pdf>
+Package pdftex.def Info: clust.pdf used on input line 289.
+(pdftex.def)             Requested size: 313.66362pt x 404.71254pt.
+ [9 <./clust.pdf>]
+<map_03.pdf, id=226, 845.1575pt x 597.23125pt>
 File: map_03.pdf Graphic file (type pdf)
-
-<use map_03.pdf>
-Package pdftex.def Info: map_03.pdf used on input line 205.
+ <use map_03.pdf>
+Package pdftex.def Info: map_03.pdf used on input line 304.
 (pdftex.def)             Requested size: 365.67236pt x 298.61488pt.
 
-Overfull \hbox (20.67236pt too wide) in paragraph at lines 205--208
+Overfull \hbox (20.67236pt too wide) in paragraph at lines 304--307
  [][] 
  []
 
-[8 <./map_03.pdf>] <RWIs.pdf, id=155, 505.89pt x 505.89pt>
+[10 <./map_03.pdf>] <RWIs.pdf, id=239, 505.89pt x 505.89pt>
 File: RWIs.pdf Graphic file (type pdf)
  <use RWIs.pdf>
-Package pdftex.def Info: RWIs.pdf used on input line 214.
+Package pdftex.def Info: RWIs.pdf used on input line 313.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
-[9 <./RWIs.pdf>] <ideltas.pdf, id=166, 505.89pt x 505.89pt>
+[11 <./RWIs.pdf>] <ideltas.pdf, id=253, 505.89pt x 505.89pt>
 File: ideltas.pdf Graphic file (type pdf)
  <use ideltas.pdf>
-Package pdftex.def Info: ideltas.pdf used on input line 226.
+Package pdftex.def Info: ideltas.pdf used on input line 325.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
-[10 <./ideltas.pdf>] <GrowthFunRes.pdf, id=178, 505.89pt x 505.89pt>
-File: GrowthFunRes.pdf Graphic file (type pdf)
+[12 <./ideltas.pdf>] <FunRes.pdf, id=266, 505.89pt x 505.89pt>
+File: FunRes.pdf Graphic file (type pdf)
 
-<use GrowthFunRes.pdf>
-Package pdftex.def Info: GrowthFunRes.pdf used on input line 243.
-(pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
- <IsoFunRes.pdf, id=179, 505.89pt x 505.89pt>
-File: IsoFunRes.pdf Graphic file (type pdf)
-
-<use IsoFunRes.pdf>
-Package pdftex.def Info: IsoFunRes.pdf used on input line 246.
-(pdftex.def)             Requested size: 276.00105pt x 276.00177pt.
-
-Overfull \hbox (4.22432pt too wide) in paragraph at lines 241--253
-[][] []
- []
-
-[11 <./GrowthFunRes.pdf> <./IsoFunRes.pdf>]
-<coherence1.pdf, id=199, 505.89pt x 505.89pt>
+<use FunRes.pdf>
+Package pdftex.def Info: FunRes.pdf used on input line 338.
+(pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
+ [13 <./FunRes.pdf>]
+<coherence1.pdf, id=289, 505.89pt x 505.89pt>
 File: coherence1.pdf Graphic file (type pdf)
  <use coherence1.pdf>
-Package pdftex.def Info: coherence1.pdf used on input line 260.
+Package pdftex.def Info: coherence1.pdf used on input line 369.
 (pdftex.def)             Requested size: 274.45341pt x 354.12057pt.
 
 
@@ -1489,39 +1488,39 @@ Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.)
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
-[12 <./coherence1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
+[14 <./coherence1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
  (./iPaper.aux (./intro.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
-
-
-Package rerunfilecheck Warning: File `iPaper.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `iPaper.out':
-(rerunfilecheck)             Before: 300841C446589C641ECBBC1B3441CC54;599
-(rerunfilecheck)             After:  FD957D2B66D9D76872820D1C0A3AE106;528.
-
-LaTeX Warning: There were undefined references.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
+Package rerunfilecheck Info: File `iPaper.out' has not changed.
+(rerunfilecheck)             Checksum: 6407EF12C64CCA7F584EA389342D6ACA;793.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
- 25206 strings out of 494953
- 445989 string characters out of 6180977
+ 25330 strings out of 494953
+ 447909 string characters out of 6180977
  592844 words of memory out of 5000000
- 28081 multiletter control sequences out of 15000+600000
+ 28195 multiletter control sequences out of 15000+600000
  15516 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 50i,9n,77p,10483b,892s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.2.5} has been referenced but does not 
-exist, replaced by a fixed one
+ 50i,9n,77p,10483b,815s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{glo:P.\040pinaster} has been referenced but does 
+not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:LWSC} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{glo:SPI} has been referenced but does not exist, re
+placed by a fixed one
+
+pdfTeX warning (dest): name{glo:TRW} has been referenced but does not exist, re
+placed by a fixed one
 
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
@@ -1542,10 +1541,10 @@ t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb>
-Output written on iPaper.pdf (12 pages, 8241511 bytes).
+Output written on iPaper.pdf (14 pages, 8253702 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 242 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 318 compressed objects within 4 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 

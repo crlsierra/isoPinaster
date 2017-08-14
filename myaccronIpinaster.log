@@ -1,0 +1,68 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdftex 2016.7.25)  23 MAY 2017 12:01
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input myaccronIpinaster.tex
+(./myaccronIpinaster.tex
+./myaccronIpinaster.tex:1: Undefined control sequence.
+l.1 \newacronym
+               {TRW}{TRW}{Tree-ring Width}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./myaccronIpinaster.tex:2: Undefined control sequence.
+l.2 \newacronym
+               {LWSC}{LWSC}{Late-Wood Stable $\delta^{13}$C}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./myaccronIpinaster.tex:3: Undefined control sequence.
+l.3 \newacronym
+               {P. pinaster}{\textit{P. pinaster}}{\textit{Pinus Pinaster} A...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./myaccronIpinaster.tex:3: Undefined control sequence.
+l.3 \newacronym{P. pinaster}{\textit
+                                    {P. pinaster}}{\textit{Pinus Pinaster} A...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./myaccronIpinaster.tex:3: Undefined control sequence.
+l.3 ...{P. pinaster}{\textit{P. pinaster}}{\textit
+                                                  {Pinus Pinaster} Ait.}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./myaccronIpinaster.tex:4: Undefined control sequence.
+l.4 \newacronym
+               {SPI}{SPI}{Standardized Precipitation Indexes}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)
+! Emergency stop.
+<*> \input myaccronIpinaster.tex
+                                
+*** (job aborted, no legal \end found)
+
+!  ==> Fatal error occurred, no output PDF file produced!

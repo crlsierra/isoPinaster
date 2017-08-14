@@ -18,7 +18,7 @@ alst1 <- alst1*10^(-3)
 d <- dist(alst1,method = 'euclidean')
 fit <- hclust(d,method = 'ward.D')
 plot(fit,
-     main = '', ylab = 'Distance (km)',
+     main = '', ylab = 'Relative Distance (km)',
      xlab='Sample plot codes',)
 abline(1500,0,lty = 2,col = 'black')
 abline(80,0,lty = 2,col = 'red')

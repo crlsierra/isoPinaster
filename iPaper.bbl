@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{6}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -37,14 +37,6 @@
   \bibinfo{pages}{251 -- 258}.
 \newblock \DOIprefix\doi{10.1016/j.dendro.2009.12.001}.
 %Type = Article
-\bibitem[{Goslee and Urban(2007)}]{Goslee2007}
-\bibinfo{author}{Goslee, S.C.}, \bibinfo{author}{Urban, D.L.},
-  \bibinfo{year}{2007}.
-\newblock \bibinfo{title}{The ecodist package for dissimilarity-based analysis
-  of ecological data}.
-\newblock \bibinfo{journal}{J. Stat. Softw.} \bibinfo{volume}{22},
-  \bibinfo{pages}{1--19}.
-%Type = Article
 \bibitem[{Herrera et~al.(2015)Herrera, Fern{\'a}ndez and
   Guti{\'e}rrez}]{Herrera2015}
 \bibinfo{author}{Herrera, S.}, \bibinfo{author}{Fern{\'a}ndez, J.},
@@ -59,23 +51,6 @@
 \newblock \bibinfo{title}{raster: Geographic data analysis and modeling}.
 \newblock \URLprefix \url{https://CRAN.R-project.org/package=raster}.
   \bibinfo{note}{r package version 2.4-30}.
-%Type = Misc
-\bibitem[{Lara and Bravo(2015)}]{Lara2015b}
-\bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.}, \bibinfo{year}{2015}.
-\newblock \bibinfo{title}{{BIOdry: Multilevel Modeling of Dendroclimatical
-  Fluctuations}}.
-\newblock \bibinfo{howpublished}{CRAN}.
-\newblock \URLprefix
-  \url{https://cran.r-project.org/web/packages/BIOdry/index.html}.
-%Type = Article
-\bibitem[{Lara et~al.(2013)Lara, Bravo and Maguire}]{Lara2013}
-\bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.},
-  \bibinfo{author}{Maguire, D.}, \bibinfo{year}{2013}.
-\newblock \bibinfo{title}{Modeling patterns between drought and tree biomass
-  growth from dendrochronological data: A multilevel approach}.
-\newblock \bibinfo{journal}{Agric. For. Meteorol.} \bibinfo{volume}{178-179},
-  \bibinfo{pages}{140 -- 151}.
-\newblock \DOIprefix\doi{10.1016/j.agrformet.2013.04.017}.
 %Type = Article
 \bibitem[{Lara et~al.(2015)Lara, Bravo and Sierra}]{Lara2015}
 \bibinfo{author}{Lara, W.}, \bibinfo{author}{Bravo, F.},
@@ -85,11 +60,5 @@
 \newblock \bibinfo{journal}{Dendrochronologia} \bibinfo{volume}{34},
   \bibinfo{pages}{43 -- 50}.
 \newblock \DOIprefix\doi{10.1016/j.dendro.2015.04.002}.
-%Type = Manual
-\bibitem[{Neves(2012)}]{Neves2012}
-\bibinfo{author}{Neves, J.}, \bibinfo{year}{2012}.
-\newblock \bibinfo{title}{{spi: Compute SPI index}}.
-\newblock \URLprefix \url{https://CRAN.R-project.org/package=spi}.
-  \bibinfo{note}{r package version 1.1}.
 
 \end{thebibliography}
