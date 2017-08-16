@@ -129,42 +129,49 @@ for the repeated analysis (commercial cellulose) was better than
 by measuring IAEA USGS-24(graphite) and IAEA-CH7 (polyethylene).
 
 \subsection{Inter-annual relationships}
-Signals in annual late-wood $\delta^{13}$C and annual aridity index
+Signals in annual late-wood $\delta^{13}$C and \gls{SPI} 
 were compared with wavelet coherency \citep{Cazelles2008}. This
 time-series comparison method produces cross-correlation contour plots
 between periods of the signals and the time. Colors of the contour
 plots vary from blue to red and illustrate correlations values from
 zero (absent signal correlation) to one (maximum signal correlation),
-respectively (Fig. \ref{fig:cohe}).  Wavelet coherency is based on the
-theory that signals can be decomposed over mother wavelets
+respectively (Fig. \ref{fig:cohe}). The wavelet coherency is based on
+the theory that signals can be decomposed over mother wavelets
 \begin{align}
-\varphi(t)=\left(\frac{t-\tau}{a}\right)\mathrm{,}
+\varphi_{p,t}(t)=\frac{1}{\sqrt{p}}\left(\frac{t-\tau}{p}\right)\mathrm{,}
 \end{align}
 
-where $(\tau)$ and $(a)$ are parameters for time position and 
-scale of the wavelets, respectively
-
-
-
-The wavelet coherency is computed following three steps. First,
-wavelet transform of each time series is calculated. For example, the
-wavelet transform of the late-wood $\delta^{13}$C time series $\delta(t)$
-is calculated as follows:
+where $\tau$ and $p$ are parameters for time position and period of
+the wavelets, respectively.  Extraction of these parameters requires
+selection of a continuous mother wavelet. Here, we use the Morlet
+wavelet \citep{Cazelles2008} which is well localized in scales and has
+high frequency resolution. Under these definitions, the wavelet
+coherency is computed following three steps. First, wavelet transform
+of each time series is calculated. For example, the wavelet transform
+of the late-wood $\delta^{13}$C time series $\delta(t)$ was computed
+as follows:
 \begin{align}\label{eq:wtransform}
-W_{x}(a,\tau)
-&=\frac{1}{\sqrt{a}}\int_{-\infty}^{\infty}\delta(t)
-\varphi^{*}\left(\frac{t-\tau}{a}\right)
+W_{\delta}(p,\tau)
+&=\frac{1}{\sqrt{p}}\int_{-\infty}^{\infty}\delta(t)
+\varphi^{*}(t)
+% \varphi^{*}\left(\frac{t-\tau}{a}\right)
 \end{align}
 
-were $W_{x}(a,\tau)$ are wavelet coeficients representing contribution
-of scales $(a)$ to the signal at different time positions
-$(\tau)$. The * sign denotes the complex conjugate form.
+were $W_{x}(p,\tau)$ are the wavelet coeficients and the * sign
+denotes the complex conjugate form. Second, cross-spectrum between
+$\delta(x)$ and \gls{SPI} time series $\gamma(t)$ is calculated as
+\begin{align}
+W_{\delta,\gamma}(p,\tau)=W_{\delta}(p,\tau)W_{\gamma}(f,\tau)
+\end{align}
 
+Finally, the wavelet coherence is computed as the cross-spectrum
+normalized by sectrum of each signal:
+\begin{align}
+R_{\delta, \gamma}(f,\tau)=\frac{\left \| \left \langle W_{\delta,\gamma}(f,\tau) \right \rangle \right \|}{\left \| \left \langle W_{\delta,\delta}(f,\tau) \right \rangle \right \|^{1/2}\left \| \left \langle W_{\gamma,\gamma}(f,\tau) \right \rangle \right \|^{1/2}}
+\end{align}
 
-This
-procedure produces normalized cross-spectrums comparing time-scales
-and localizations of the time series. Cross-spectrums are level plots
-of cross-correlations between time series
+where $\left \langle \right \rangle$ is an smooting operator and
+$0 \le R_{\delta, \gamma}(f,\tau) \le 1$
  
 
 
