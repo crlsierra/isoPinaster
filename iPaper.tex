@@ -130,12 +130,50 @@ by measuring IAEA USGS-24(graphite) and IAEA-CH7 (polyethylene).
 
 \subsection{Inter-annual relationships}
 Signals in annual late-wood $\delta^{13}$C and annual aridity index
-were compared with wavelet coherency \citep{Cazelles2008}. 
+were compared with wavelet coherency \citep{Cazelles2008}. This
+time-series comparison method produces cross-correlation contour plots
+between periods of the signals and the time. Colors of the contour
+plots vary from blue to red and illustrate correlations values from
+zero (absent signal correlation) to one (maximum signal correlation),
+respectively (Fig. \ref{fig:cohe}).  Wavelet coherency is based on the
+theory that signals can be decomposed over mother wavelets
+$\varphi(t)$. These are expressed as function of two parameters: the
+time position $(\tau)$, and the scale of the wavelets $(a)$:
+\begin{align}
+\varphi(t)=\left(\frac{t-\tau}{a}\right)\mathrm{.}
+\end{align}
 
 
+The wavelet coherency is computed following three steps. First,
+wavelet transform of each time series is calculated. For example, the
+wavelet transform of the late-wood $\delta^{13}$C time series $\delta(t)$
+is calculated as follows:
+\begin{align}\label{eq:wtransform}
+W_{x}(a,\tau)
+&=\frac{1}{\sqrt{a}}\int_{-\infty}^{\infty}\delta(t)
+\varphi^{*}\left(\frac{t-\tau}{a}\right)
+\end{align}
 
-This procedure produces normalized cross-spectrums comparing
-time-scales and localizations of two time series
+were $W_{x}(a,\tau)$ are wavelet coeficients representing contribution
+of scales $(a)$ to the signal at different time positions
+$(\tau)$. The * sign denotes the complex conjugate form.
+
+
+This
+procedure produces normalized cross-spectrums comparing time-scales
+and localizations of the time series. Cross-spectrums are level plots
+of cross-correlations between time series
+ 
+
+
+The
+wavelet coherence is defined as the cross-spectrum normalized by the
+spectrum of each signal. 
+\begin{align}\label{eq:sqrtAI1}
+W_{x,y}(f,\tau)=W_{x}(f,\tau)W_{y}(f,\tau)
+\end{align}
+
+
 
 We compared the series of annual late-wood $\delta^{13}$C and annual
 aridity index with wavelet coherency \citep{}. This approach enables
@@ -147,9 +185,9 @@ The wavelet cross-spectrums are correlograms
 The wavelet
 cross-spectrums is defined as follows:
 
-\begin{equation}\label{eq:dC}
-W_{x,y}(f,\tau)=W_{x}(f,\tau)W_{y}(f,\tau)
-\end{equation}
+% \begin{equation}\label{eq:dC}
+% W_{x,y}(f,\tau)=W_{x}(f,\tau)W_{y}(f,\tau)
+% \end{equation}
 
 where $W_{x}(f,\tau)$
 
