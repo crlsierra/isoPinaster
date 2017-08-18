@@ -128,15 +128,32 @@ for the repeated analysis (commercial cellulose) was better than
 0.1. was better than 0.1 percent. The calibration versus VPDB was done
 by measuring IAEA USGS-24(graphite) and IAEA-CH7 (polyethylene).
 
+\subsection{Precipitation deficits}
+Deficits in annual precipitation along study sites were infered with
+annual \glspl{SPI} \citep{McKee1993}. This method produces normalized
+precipitations over time where the annual droughts are
+indicated by periods in which the \glspl{SPI} are continuously
+negative and reaches values of -1 or less. To compute the \glspl{SPI},
+we abstracted monthly precipitation records (1971-2010) for peninsular
+Spain \citep[~Spain02]{Herrera2015} using UTM coordinates of the
+sample plots.
+
+
+ Monthly precipitation records from
+1971 to 2010 were abstracted from a gridded-precipitation dataset,
+0.11$^{\circ}$ resolution, for peninsular Spain
+\citep[~Spain02]{Herrera2015} using UTM coordinates of the sample
+plots.
+
 \subsection{Inter-annual relationships}
-Signals in annual late-wood $\delta^{13}$C and \gls{SPI} 
-were compared with wavelet coherency \citep{Cazelles2008}. This
-time-series comparison method produces cross-correlation contour plots
-between periods of the signals and the time. Colors of the contour
-plots vary from blue to red and illustrate correlations values from
-zero (absent signal correlation) to one (maximum signal correlation),
-respectively (Fig. \ref{fig:cohe}). The wavelet coherency is based on
-the theory that signals can be decomposed over mother wavelets
+Signals in annual late-wood $\delta^{13}$C and \gls{SPI} were compared
+with wavelet coherency \citep{Cazelles2008}. This time-series
+comparison method produces cross-spectrum plots between periods of the
+signals and the time. Colors of the cross-spectrum plots vary from
+blue to red and illustrate correlations values from zero (absent
+signal correlation) to one (maximum signal correlation), respectively
+(Fig. \ref{fig:cohe}). The wavelet coherency is based on the theory
+that signals can be decomposed over mother wavelets
 \begin{align}
 \varphi_{p,t}(t)=\frac{1}{\sqrt{p}}\left(\frac{t-\tau}{p}\right)\mathrm{,}
 \end{align}
@@ -144,9 +161,9 @@ the theory that signals can be decomposed over mother wavelets
 where $\tau$ and $p$ are parameters for time position and period of
 the wavelets, respectively.  Extraction of these parameters requires
 selection of a continuous mother wavelet. Here, we use the Morlet
-wavelet \citep{Cazelles2008} which is well localized in scales and has
+wavelet \citep{Torrence1998} which is well localized in scales and has
 high frequency resolution. Under these definitions, the wavelet
-coherency is computed following three steps. First, wavelet transform
+coherency is computed following four steps. First, wavelet transform
 of each time series is calculated. For example, the wavelet transform
 of the late-wood $\delta^{13}$C time series $\delta(t)$ was computed
 as follows:
@@ -161,44 +178,25 @@ were $W_{x}(p,\tau)$ are the wavelet coeficients and the * sign
 denotes the complex conjugate form. Second, cross-spectrum between
 $\delta(x)$ and \gls{SPI} time series $\gamma(t)$ is calculated as
 \begin{align}
-W_{\delta,\gamma}(p,\tau)=W_{\delta}(p,\tau)W_{\gamma}(f,\tau)
+W_{\delta,\gamma}(p,\tau)=W_{\delta}(p,\tau)W_{\gamma}(p,\tau)
 \end{align}
 
-Finally, the wavelet coherence is computed as the cross-spectrum
+Third, the wavelet coherence is computed as the cross-spectrum
 normalized by sectrum of each signal:
 \begin{align}
-R_{\delta, \gamma}(f,\tau)=\frac{\left \| \left \langle W_{\delta,\gamma}(f,\tau) \right \rangle \right \|}{\left \| \left \langle W_{\delta,\delta}(f,\tau) \right \rangle \right \|^{1/2}\left \| \left \langle W_{\gamma,\gamma}(f,\tau) \right \rangle \right \|^{1/2}}
+R_{\delta, \gamma}(p,\tau)=\frac{\left \| \left \langle W_{\delta,\gamma}(p,\tau) \right \rangle \right \|}{\left \| \left \langle W_{\delta,\delta}(p,\tau) \right \rangle \right \|^{1/2}\left \| \left \langle W_{\gamma,\gamma}(p,\tau) \right \rangle \right \|^{1/2}}
 \end{align}
 
 where $\left \langle \right \rangle$ is an smooting operator and
-$0 \le R_{\delta, \gamma}(f,\tau) \le 1$
- 
+$0 \le R_{\delta, \gamma}(p,\tau) \le 1$.
 
-
-The
-wavelet coherence is defined as the cross-spectrum normalized by the
-spectrum of each signal. 
-\begin{align}\label{eq:sqrtAI1}
-W_{x,y}(f,\tau)=W_{x}(f,\tau)W_{y}(f,\tau)
-\end{align}
-
-
-
-We compared the series of annual late-wood $\delta^{13}$C and annual
-aridity index with wavelet coherency \citep{}. This approach enables
-comparison of properties of two time series principally its time-scale
-and localization.
-
-The wavelet cross-spectrums are correlograms
-
-The wavelet
-cross-spectrums is defined as follows:
-
-% \begin{equation}\label{eq:dC}
-% W_{x,y}(f,\tau)=W_{x}(f,\tau)W_{y}(f,\tau)
-% \end{equation}
-
-where $W_{x}(f,\tau)$
+Finally, a cone of influence is added to cross-spectrum plot
+(Fig. \ref{fig:cohe}) to avoid edge-effects from discontinuities in
+finite-length time series. Such discontinuities occurr at the
+beginning and end of the wavelet spectrum by assumming that time
+series are cyclic. The cone of influence is defined as the $e$-folding
+time for the autocorrelation of wavelet power at each scale
+\citep{Torrence1998}.
 
 
 % \subsection{Multilevel detrending}
